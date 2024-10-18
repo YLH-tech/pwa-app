@@ -1,8 +1,7 @@
-
 {
-  "name": "My PWA",
+  "name": "My PWA App",
   "short_name": "PWA",
-  "start_url": "/index.html",
+  "start_url": "/pwa-app/index.html",  // Correct URL for GitHub Pages
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",
