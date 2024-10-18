@@ -1,27 +1,22 @@
-const cacheName = 'pwa-app-v1';
-const assetsToCache = [
-    '/pwa-app/',
-    '/pwa-app/index.html',
-    '/pwa-app/manifest.json',
-    '/pwa-app/images/icon-192x192.png',
-    '/pwa-app/images/icon-512x512.png'
-];
-
-// Install the service worker
-self.addEventListener('install', event => {
+self.addEventListener('install', function(event) {
     event.waitUntil(
-        caches.open(cacheName)
-        .then(cache => {
-            return cache.addAll(assetsToCache);
+        caches.open('my-cache').then(function(cache) {
+            return cache.addAll([
+                '/index.html',
+                '/style.css',
+                '/loopingStyle.css',
+                '/tableStyle.css',
+                '/loopingScript.js',
+                '/modifyScript.js',
+                'LTC.png'
+            ]);
         })
     );
 });
 
-// Fetch the cached assets
-self.addEventListener('fetch', event => {
+self.addEventListener('fetch', function(event) {
     event.respondWith(
-        caches.match(event.request)
-        .then(response => {
+        caches.match(event.request).then(function(response) {
             return response || fetch(event.request);
         })
     );
